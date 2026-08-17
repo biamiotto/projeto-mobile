@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "projeto-miotto",
+    "slug": "projeto-miotto",
+    "scheme": "projeto-miotto",
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
