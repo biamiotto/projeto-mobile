@@ -40,6 +40,20 @@ export default function TabsLayout() {
           headerTitle: "Sobre Mim",
         }}
       />
+      <Tabs.Screen
+        name="api"
+        options={{
+          title: "Api",
+          headerTitle: "Api",
+        }}
+      />
+      <Tabs.Screen
+        name="post"
+        options={{
+          title: "Criar Herói",
+          headerTitle: "Criar Herói",
+        }}
+      />
     </Tabs>
   );
 }
