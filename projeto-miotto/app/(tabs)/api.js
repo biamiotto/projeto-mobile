@@ -1,47 +1,47 @@
 import { React, useState, useEffect } from "react"
 import { View, Text, Image, ActivityIndicator, ScrollView, StyleSheet } from "react-native"
-import axios from "axios" // lib usada pra fazer chamadas HTTP para API
-import { SafeAreaView } from "react-native-safe-area-context" // evita que conteudo fique embaixo do notch/barra do celular
+import axios from "axios"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 const API_KEY = "cv_abDkjvFLznGPXnFtFrqpke7meW8SbeQKXVvYczGupSf_MT4jG8e4KkKYkPNfvzXZ"
 
 const api = axios.create({
     baseURL: "https://api-ds.codeverse.dev.br",
     headers: {
-        "x-api-key": API_KEY // passo pelo header a key da API
+        "x-api-key": API_KEY
     }
 })
 
-export default function HeroisListarScreen() {
-    const [herois, setHerois] = useState([])
+export default function JogosListarScreen() {
+    const [jogos, setJogos] = useState([])
     const [carregando, setCarregando] = useState(true)
     const [erro, setErro] = useState(null)
 
-    async function buscarHerois() {
+    async function buscarJogos() {
         setCarregando(true)
         setErro(null)
         try {
-            const resposta = await api.get("/api/herois", {
+            const resposta = await api.get("/api/jogos", {
                 params: { limit: 50 }
             })
-            setHerois(resposta.data.data)
+            setJogos(resposta.data.data)
         } catch (error) {
-            setErro("Não foi possivel carregar herois")
+            setErro("Não foi possivel carregar jogos")
         } finally {
             setCarregando(false)
         }
     }
 
     useEffect(() => {
-        buscarHerois()
+        buscarJogos()
     }, [])
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView contentContainerStyle={styles.conteudo}>
                 <View style={styles.header}>
-                    <Text style={styles.tituloPagina}>Listar heróis</Text>
-                    <Text style={styles.subtitulo}>GET /api/herois</Text>
+                    <Text style={styles.tituloPagina}>Listar jogos</Text>
+                    <Text style={styles.subtitulo}>GET /api/jogos</Text>
                 </View>
 
                 {carregando && <ActivityIndicator style={{ marginVertical: 16 }} />}
@@ -49,13 +49,13 @@ export default function HeroisListarScreen() {
                 {erro && <Text style={styles.erro}>{erro}</Text>}
 
                 {!carregando &&
-                    herois.map((heroi) => (
-                        <View key={heroi.id} style={styles.card}>
-                            <Image source={{ uri: heroi.imageUrl }} style={styles.imagem} />
+                    jogos.map((jogo) => (
+                        <View key={jogo.id} style={styles.card}>
+                            <Image source={{ uri: jogo.imageUrl }} style={styles.imagem} />
                             <View style={styles.info}>
-                                <Text style={styles.titulo}>{heroi.title}</Text>
+                                <Text style={styles.titulo}>{jogo.title}</Text>
                                 <Text style={styles.categoria}>
-                                    {heroi.category} · {heroi.year}
+                                    {jogo.genero} · {jogo.ano_lancamento}
                                 </Text>
                             </View>
                         </View>
@@ -68,7 +68,7 @@ export default function HeroisListarScreen() {
 const styles = StyleSheet.create({
     safeArea: { 
         flex: 1, 
-        backgroundColor: "#f8fbff" 
+        backgroundColor: "#fff0f6",
     }, 
     conteudo: { 
         padding: 24, 
@@ -79,11 +79,11 @@ const styles = StyleSheet.create({
     tituloPagina: { 
         fontSize: 24, 
         fontWeight: "800", 
-        color: "#102542" 
+        color: "#e65da8",
     }, 
     subtitulo: { 
         fontSize: 14, 
-        color: "#5f6b7a", 
+        color: "#a34d7d", 
         marginTop: 2 
     },
     erro: { 
@@ -109,6 +109,6 @@ const styles = StyleSheet.create({
     }, 
     categoria: { 
         fontSize: 13, 
-        color: "#64748b" 
+        color: "#e92691" 
     }, 
 });

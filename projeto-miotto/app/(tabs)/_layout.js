@@ -43,15 +43,15 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="api"
         options={{
-          title: "Api",
-          headerTitle: "Api",
+          title: "Lista Jogos",
+          headerTitle: "Lista Jogos",
         }}
       />
       <Tabs.Screen
         name="post"
         options={{
-          title: "Criar Herói",
-          headerTitle: "Criar Herói",
+          title: "Criar Jogo",
+          headerTitle: "Criar Jogo",
         }}
       />
     </Tabs>
