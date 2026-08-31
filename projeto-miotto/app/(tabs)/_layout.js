@@ -54,6 +54,13 @@ export default function TabsLayout() {
           headerTitle: "Criar Jogo",
         }}
       />
+      <Tabs.Screen
+        name="delete"
+        options={{
+          title: "Deletar Jogo",
+          headerTitle: "Deletar Jogo",
+        }}
+      />
     </Tabs>
   );
 }
