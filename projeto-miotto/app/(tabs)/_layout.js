@@ -68,6 +68,13 @@ export default function TabsLayout() {
           headerTitle: "Editar Jogo",
         }}
       />
+      <Tabs.Screen
+        name="getById"
+        options={{
+          title: "Buscar Jogo",
+          headerTitle: "Buscar Jogo",
+        }}
+      />
     </Tabs>
   );
 }
