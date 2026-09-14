@@ -4,7 +4,8 @@
     "slug": "projeto-miotto",
     "scheme": "projeto-miotto",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-status-bar"
     ],
     "experiments": {
       "typedRoutes": true
